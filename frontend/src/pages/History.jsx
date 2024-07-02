@@ -1,14 +1,11 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Appbar } from "../components/Appbar"
-import { Balance } from "../components/Balance"
-import { Users } from "../components/Users"
 import { Sidebar } from "../components/Sidebar"
+import { HistoryComp } from "../components/HistoryComp"
 
-export const Dashboard = () => {
-    const [balance, setBalance] = useState(0);
+export function History() {
     const [firstLetterOfName, setFirstLetterOfName] = useState("");
-    const [name, setName] = useState("");
 
     useEffect(() => {
         axios.get("http://localhost:3000/api/v1/account/balance", {
@@ -17,10 +14,6 @@ export const Dashboard = () => {
             }
         })
             .then(response => {
-                // Round the balance to two decimal places
-                const roundedBalance = parseFloat(response.data.balance).toFixed(2);
-                setBalance(roundedBalance);
-                setName(response.data.name)
                 const letter = response.data.name.charAt(0).toUpperCase();
                 setFirstLetterOfName(letter);
             })
@@ -30,10 +23,7 @@ export const Dashboard = () => {
         <Appbar letter={firstLetterOfName}/>
         <div className="grid grid-cols-6">
             <Sidebar className="col-span-1" />
-            <div className="m-8 col-span-5">
-                <Balance balance={balance} />
-                <Users name={name} />
-            </div>
+            <HistoryComp className="col-span-5" />
         </div>
     </div>
 }

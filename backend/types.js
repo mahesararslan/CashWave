@@ -20,6 +20,7 @@ const updateBody = z.object({
 
     firstName: z.string().optional(),
     lastName: z.string().optional(),
+    username: z.string().email().optional(),
     password: z.string().optional()
 
 });

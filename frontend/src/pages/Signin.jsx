@@ -2,6 +2,7 @@ import axios from "axios";
 import { Heading } from "../components/Heading";
 import { SubHeading } from "../components/SubHeading";
 import { InputBox } from "../components/InputBox";
+import { PasswordInput } from "../components/PasswordInput";
 import { Button } from "../components/Button";
 import { BottomWarning } from "../components/BottomWarning";
 import { useNavigate } from "react-router-dom";
@@ -20,9 +21,13 @@ export function Signin() {
         <InputBox onChange={e => {
           setUsername(e.target.value);
         }} placeholder="xyz@gmail.com" label={"Email"} />
-        <InputBox onChange={e => {
-          setPassword(e.target.value);
-        }} placeholder="123456" label={"Password"} />
+        <PasswordInput
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            placeholder="123456"
+            label={"Password"}
+          />
         <div className="pt-4">
           <Button onClick={async () => {
             const response = await axios.post("http://localhost:3000/api/v1/user/signin", {

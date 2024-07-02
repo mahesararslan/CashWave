@@ -1,8 +1,27 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-    "mongodb://localhost:27017/cashwave"
+    "mongodb://localhost:27017/cashwave-db"
 );
+
+const historySchema = new mongoose.Schema({
+    name: {
+      type: String,
+      required: true,
+    },
+    amount: {
+      type: Number,
+      required: true,
+    },
+    sent: {
+      type: Boolean,
+      required: true,
+    },
+    timestamp: {
+      type: Date,
+      default: Date.now,
+    },
+  });
 
 const UserSchema = new mongoose.Schema({
     username: {
@@ -30,7 +49,8 @@ const UserSchema = new mongoose.Schema({
         required: true,
         trim: true,
         maxLength: 50
-    }
+    },
+    history: [historySchema],
 })
 
 const accountSchema = new mongoose.Schema({
