@@ -12,6 +12,11 @@ A MERN stack application for user authentication and money transfer with a React
 - JWT-based authentication
 - Account balance retrieval
 - Money transfer between users
+- History section to view transaction history
+- Update user information
+- Protective routing
+- MongoDB Transactions for data consistency and atomicity
+- Debouncing for improved search performance
 - Responsive frontend built with React
 
 ## Installation
@@ -61,5 +66,4 @@ A MERN stack application for user authentication and money transfer with a React
 ## Usage
 1. Open your browser and navigate to `http://localhost:5173`.
 2. Sign up for a new account or sign in with an existing one.
-3. Use the dashboard to check your balance and transfer money to other users.
-
+3. Use the dashboard to check your balance, transfer money to other users, and view your transaction history.
